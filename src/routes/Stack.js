@@ -21,13 +21,24 @@ export default props => {
             )}    
         </Stack.Screen>
         <Stack.Screen 
-            name='TelaB' 
-            options={{title: 'Segunda tela'}}
-            component={TelaB}/>
+            name='TelaB'
+            options={{title: 'Segunda tela'}}> 
+            {props =>(
+                <PassoStack {...props} avancar='TelaC' voltar>
+                    <TelaB/>
+                </PassoStack>
+            )}
+        </Stack.Screen>
         <Stack.Screen 
-            name='TelaC' 
-            options={{title: 'Terceira tela'}}
-            component={TelaC}/>
+            name='TelaC'
+            options={{title: 'Terceira tela'}}>
+            {props =>(
+                <PassoStack {...props} voltar avancar='TelaC'>
+                    <TelaC  {...props}/>
+                </PassoStack>
+            )}
+        </Stack.Screen>
+
     </Stack.Navigator>
     ) 
 }
